@@ -8,6 +8,8 @@ import org.example.automationtool.TransitionMethods.Next;
  */
 public interface Action {
 
+
+
     Status run();
 
     Next getNext();

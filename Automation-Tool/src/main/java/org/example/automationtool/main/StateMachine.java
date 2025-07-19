@@ -1,4 +1,4 @@
-package org.example.automationtool;
+package org.example.automationtool.main;
 
 import org.example.automationtool.Actions.Action;
 import org.example.automationtool.Actions.Status;

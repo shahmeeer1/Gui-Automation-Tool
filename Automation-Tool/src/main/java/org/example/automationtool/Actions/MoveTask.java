@@ -8,15 +8,19 @@ import org.example.automationtool.TransitionMethods.Next;
  * Implements Java Robot api.
  * Mouse movement implementation incomplete-
  */
-public class MoveTask implements Action{
+public class MoveTask extends ActionWrapper implements Action{
     private final int x;
     private final int y;
     private final Next nextStrategy;
 
-    public MoveTask(int x, int y, Next next){
+    protected MoveTask(int x, int y, Next next){
+        super("Move Mouse");
         this.x = x;
         this.y = y;
         this.nextStrategy = next;
+
+
+        value.set(String.format("Move to (%d, %d)", x, y));
     }
 
     @Override

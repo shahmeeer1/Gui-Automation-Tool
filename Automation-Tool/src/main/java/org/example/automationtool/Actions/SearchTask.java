@@ -8,16 +8,19 @@ import org.example.automationtool.TransitionMethods.Next;
  * Implements openCV template Matching.
  * Template Matching implementation Incomplete
  */
-public class SearchTask implements Action{
+public class SearchTask extends ActionWrapper implements Action{
 
     private String template;
     private String image;
     private final ConditionalNext nextStrategy;
 
-    public SearchTask(String image, String template, ConditionalNext next){
+    protected SearchTask(String image, String template, ConditionalNext next){
+        super("Find Image");
         this.image = image;
         this.template = template;
         this.nextStrategy = next;
+
+        value.set("");
     }
 
 
