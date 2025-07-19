@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label alignment="CENTER" prefHeight="35.0" prefWidth="600.0" text="Move Mouse" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="Comic Sans MS" size="23.0" />
+         </font>
+      </Label>
+      <VBox prefHeight="424.0" prefWidth="464.0" VBox.vgrow="ALWAYS">
+         <children>
+            <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="234.0" text="Move mouse cursor to:">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <VBox fx:id="EntryContainer" prefHeight="100.0" prefWidth="454.0">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="590.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="X Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry">
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="590.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="Y Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="yEntry" alignment="CENTER" prefHeight="21.0" prefWidth="143.0">
+                           <HBox.margin>
+                              <Insets right="10.0" top="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </VBox>
+            <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="351.0" textAlignment="CENTER" textFill="#e40505">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="60.0" />
+               </VBox.margin>
+            </Label>
+            <Pane prefHeight="141.0" prefWidth="404.0">
+               <children>
+                  <VBox prefHeight="137.0" prefWidth="314.0">
+                     <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="31.0" prefWidth="234.0" text="Starting position:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <VBox fx:id="EntryContainer1" prefHeight="117.0" prefWidth="442.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="276.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="X Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry1">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" right="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="374.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="Y Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="yEntry1" alignment="CENTER" prefHeight="21.0" prefWidth="143.0">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" right="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets bottom="10.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="293.0" textAlignment="CENTER" textFill="#e40505">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="Comic Sans MS" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="60.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="60.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets bottom="10.0" />
+               </opaqueInsets>
+            </Pane>
+            <Separator prefHeight="22.0" prefWidth="464.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Separator>
+            <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="234.0" text="Move mouse cursor by:">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <VBox fx:id="EntryContainer2" prefHeight="94.0" prefWidth="454.0">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="276.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="X Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry2">
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="47.0" prefWidth="454.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="Y Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="yEntry2" alignment="CENTER" prefHeight="21.0" prefWidth="143.0">
+                           <HBox.margin>
+                              <Insets right="10.0" top="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </VBox>
+            <Label alignment="TOP_LEFT" prefHeight="40.0" prefWidth="336.0" textAlignment="CENTER" textFill="#e40505">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>

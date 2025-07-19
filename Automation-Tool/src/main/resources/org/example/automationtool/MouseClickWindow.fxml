@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="256.0" text="Mouse Click" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <VBox fx:id="EntryContainer" prefHeight="76.0" prefWidth="276.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="276.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="X Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="10.0" top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="256.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="88.0" text="Y Coordinate:" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="yEntry" alignment="CENTER" prefHeight="21.0" prefWidth="143.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="256.0" textAlignment="CENTER" textFill="RED" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <ButtonBar prefHeight="52.0" prefWidth="276.0" VBox.vgrow="ALWAYS">
+        <buttons>
+          <Button fx:id="SelectButton" alignment="CENTER" mnemonicParsing="false" text="Select" />
+            <Button fx:id="ClickButton" mnemonicParsing="false" text="Click" />
+        </buttons>
+         <padding>
+            <Insets right="50.0" />
+         </padding>
+      </ButtonBar>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>
