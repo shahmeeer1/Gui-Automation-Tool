@@ -4,7 +4,7 @@ import org.example.automationtool.TransitionMethods.IncrementNext;
 
 public class clickTaskFactory {
 
-    public static MoveTask createClickTask(int x, int y){
-        return new MoveTask(x, y, new IncrementNext());
+    public static clickTask createClickTask(int x, int y){
+        return new clickTask(x, y, new IncrementNext());
     }
 }

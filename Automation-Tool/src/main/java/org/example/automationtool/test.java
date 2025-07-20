@@ -11,7 +11,7 @@ public class test extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load Main window gui from FXML
-        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MouseClickWindow.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

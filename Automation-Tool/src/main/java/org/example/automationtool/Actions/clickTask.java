@@ -30,4 +30,9 @@ public class clickTask extends ActionWrapper implements Action{
     public Next getNext() {
         return nextStrategy;
     }
+
+    //TEMPORARY
+    public String toString(){
+        return String.format("Clicking at (%d, %d)", x, y);
+    }
 }
