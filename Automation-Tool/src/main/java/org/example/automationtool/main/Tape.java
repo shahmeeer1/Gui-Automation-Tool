@@ -21,5 +21,4 @@ public class Tape {
     public void addState(Action state){
         tape.add(state);
     }
-
 }

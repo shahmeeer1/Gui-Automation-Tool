@@ -1,3 +1,7 @@
+// TODO: check if both openpopup methods are really needed
+//TODO: Maybe generalise openpopupwithcb
+//TODO: Add import exportt of tapes
+
 package org.example.automationtool.main;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +22,7 @@ import org.example.automationtool.TransitionMethods.IncrementNext;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 public class MainController implements Initializable{
 
@@ -47,6 +52,7 @@ public class MainController implements Initializable{
     private TableColumn<Action, String> Comment_Column;
 
     private Tape tape;
+    private Consumer<Action> addToTape;
 
 
 
@@ -54,13 +60,7 @@ public class MainController implements Initializable{
     protected void onClickActionButton(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseClickWindow.fxml"));
 
-        openPopup(loader);
-
-        //TEST
-        //Action n = clickTaskFactory.createClickTask(10, 20);
-//        tape.addState(clickTaskFactory.createClickTask(10, 20));
-//        tape.addState(clickTaskFactory.createClickTask(190, 30));
-
+        openPopupWithCB(loader);
 
     }
 
@@ -80,14 +80,43 @@ public class MainController implements Initializable{
 
     }
 
+    /**
+     * Load popup window.
+     * Send callback to popup controller.
+     * Callback to add state to tape
+     * @param loader
+     */
+    private void openPopupWithCB(FXMLLoader loader){
+        Parent root = null;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ClickWindowController controller = loader.getController();
+        controller.setCallback(addToTape);
+
+        Stage popupStage = new Stage();
+        popupStage.setScene(new Scene(root));
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.showAndWait();
+    }
+
     //TODO: Complete table configurations
     //TODO: Add numbers column
+    //TODO: generalise table process to allow for new tapes to be imported
+    //TODO: export from table
     @Override
     @SuppressWarnings("unchecked")
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Create new tape object
         tape = new Tape();
+        addToTape = (state) -> {addStateToTape(state);};
 
 
+        // Connect table to tape
         Table.setItems(tape.getTape());
         Action_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("action"));
         Value_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("value"));
@@ -98,5 +127,9 @@ public class MainController implements Initializable{
 
         Table.getColumns().setAll(Action_Column, Value_Column, Label_Column, Comment_Column);
 
+    }
+
+    private void addStateToTape(Action state){
+        tape.addState(state);
     }
 }

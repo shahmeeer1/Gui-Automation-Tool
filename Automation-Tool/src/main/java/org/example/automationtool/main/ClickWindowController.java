@@ -1,3 +1,5 @@
+//TODO: Consider creating interface to generalise controllers such as callback process
+//TODO: Select button functionality
 package org.example.automationtool.main;
 
 import javafx.event.ActionEvent;
@@ -33,7 +35,7 @@ public class ClickWindowController implements Initializable {
     @FXML
     private Label errorLabel;
 
-    private Consumer<Action> callback; //To send new state back ot main controller
+    private Consumer<Action> sendState; //To send new state back ot main controller
 
     @FXML
     // Only enable confirm button if there is something in both entries
@@ -55,11 +57,10 @@ public class ClickWindowController implements Initializable {
         clickTask action = clickTaskFactory.createClickTask(x, y);
 
         //TODO: send back to main controller
-        callback.accept(action);
+        sendState.accept(action);
 
         //close window
         ((Stage) ClickButton.getScene().getWindow()).close();
-
 
     }
 
@@ -84,6 +85,6 @@ public class ClickWindowController implements Initializable {
     }
 
     public void setCallback(Consumer<Action> callback) {
-        this.callback = callback;
+        this.sendState = callback;
     }
 }
