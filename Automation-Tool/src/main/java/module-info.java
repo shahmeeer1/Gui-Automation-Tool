@@ -1,6 +1,7 @@
 module org.example.automationtool {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     exports org.example.automationtool.TransitionMethods;

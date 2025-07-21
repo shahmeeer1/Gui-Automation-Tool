@@ -5,13 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class AppController extends Application{
-
-    private Tape tape;
 
     @Override
     public void start(Stage primaryStage) throws Exception {

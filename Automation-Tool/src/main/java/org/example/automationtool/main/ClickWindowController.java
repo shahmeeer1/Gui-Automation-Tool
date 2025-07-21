@@ -1,5 +1,6 @@
 //TODO: Consider creating interface to generalise controllers such as callback process
 //TODO: Select button functionality
+//TODO: Refactor text filter to class
 package org.example.automationtool.main;
 
 import javafx.event.ActionEvent;
@@ -68,20 +69,8 @@ public class ClickWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        UnaryOperator<TextFormatter.Change> digitFilter = change ->{
-            String newText = change.getControlNewText();
-            if(newText.matches("\\d+")){
-                return change; // accept input
-            }
-            else if (change.isDeleted()) {
-                return change;
-
-            } else{return null;} // reject change
-        };
-
-
-        xEntry.setTextFormatter(new TextFormatter<>(digitFilter));
-        yEntry.setTextFormatter(new TextFormatter<>(digitFilter));
+        xEntry.setTextFormatter(DigitFilter.createDigitFilter());
+        yEntry.setTextFormatter(DigitFilter.createDigitFilter());
     }
 
     public void setCallback(Consumer<Action> callback) {

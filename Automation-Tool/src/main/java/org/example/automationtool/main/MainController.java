@@ -1,9 +1,6 @@
-// TODO: check if both openpopup methods are really needed
-//TODO: Maybe generalise openpopupwithcb
-//TODO: Add import exportt of tapes
+//TODO: Add import export of tapes
 
 package org.example.automationtool.main;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,8 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.automationtool.Actions.Action;
-import org.example.automationtool.Actions.clickTaskFactory;
-import org.example.automationtool.TransitionMethods.IncrementNext;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +59,14 @@ public class MainController implements Initializable{
 
     }
 
+    @FXML
+    protected void onMouseMoveButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseMoveWindow.fxml"));
+
+        openPopUpWithSceneCB(loader);
+    }
+
+
     private void openPopup(FXMLLoader loader){
         Parent root = null;
 
@@ -103,6 +106,33 @@ public class MainController implements Initializable{
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.showAndWait();
     }
+
+    /**
+     * Load the move mouse window
+     * @param loader
+     */
+    private void openPopUpWithSceneCB(FXMLLoader loader){
+        Parent root = null;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        MoveWindowController controller = loader.getController();
+        controller.setScene(scene); // scene available here
+
+        Stage popupStage = new Stage();
+        popupStage.setScene(scene);
+        popupStage.setTitle("Your Window Title");
+        popupStage.show();
+    }
+
+
+
 
     //TODO: Complete table configurations
     //TODO: Add numbers column
