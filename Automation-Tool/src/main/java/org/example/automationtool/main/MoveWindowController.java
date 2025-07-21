@@ -192,7 +192,7 @@ public class MoveWindowController implements Initializable {
 
         for(TextField[] entryArr:CBToTextFieldMap.values()){
             for(TextField entry: entryArr){
-                entry.setTextFormatter(DigitFilter.createDigitFilter());
+                entry.setTextFormatter(DigitFilter.createDigitFilter(5));
             }
         }
 

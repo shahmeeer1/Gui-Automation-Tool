@@ -1,3 +1,4 @@
+//TODO: Test new limit parameter on line 17 works
 package org.example.automationtool.main;
 
 import javafx.scene.control.TextFormatter;
@@ -8,12 +9,12 @@ public class DigitFilter {
 
     private DigitFilter(){}
 
-    public static TextFormatter<UnaryOperator<TextFormatter.Change>> createDigitFilter(){
+    public static TextFormatter<UnaryOperator<TextFormatter.Change>> createDigitFilter(int limit){
         UnaryOperator<TextFormatter.Change> digitFilter = change ->{
 
             String newText = change.getControlNewText();
 
-            if(newText.matches("\\d+") && newText.length() < 6){
+            if(newText.matches("\\d+") && newText.length() < limit){
                 return change; // accept input
             }
             else if(change.isReplaced()){

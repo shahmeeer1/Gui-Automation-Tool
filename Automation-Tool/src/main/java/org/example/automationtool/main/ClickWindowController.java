@@ -69,8 +69,8 @@ public class ClickWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        xEntry.setTextFormatter(DigitFilter.createDigitFilter());
-        yEntry.setTextFormatter(DigitFilter.createDigitFilter());
+        xEntry.setTextFormatter(DigitFilter.createDigitFilter(5));
+        yEntry.setTextFormatter(DigitFilter.createDigitFilter(5));
     }
 
     public void setCallback(Consumer<Action> callback) {

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="org.example.automationtool.main.DelayWindowController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox prefHeight="55.0" prefWidth="310.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Set Delay: ">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="DelayEntry">
+               <HBox.margin>
+                  <Insets top="16.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Separator prefHeight="8.0" prefWidth="310.0" />
+      <Label fx:id="ErrorLabel" prefHeight="24.0" prefWidth="238.0" textFill="RED">
+         <VBox.margin>
+            <Insets left="50.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Comic Sans MS" size="11.0" />
+         </font>
+      </Label>
+      <ButtonBar prefHeight="40.0" prefWidth="270.0">
+        <buttons>
+          <Button fx:id="ConfirmDelayButton" onAction="#onConfirmButtonClick" alignment="CENTER" minWidth="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Confirm">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+        </buttons>
+         <VBox.margin>
+            <Insets right="20.0" />
+         </VBox.margin>
+      </ButtonBar>
+   </children>
+</VBox>

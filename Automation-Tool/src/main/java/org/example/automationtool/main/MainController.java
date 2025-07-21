@@ -29,6 +29,8 @@ public class MainController implements Initializable{
     @FXML
     private Button VariableInsertButton;
     @FXML
+    private Button TimerButton;
+    @FXML
     private Button ClickActionButton;
     @FXML
     private Button MoveActionButton;
@@ -56,7 +58,11 @@ public class MainController implements Initializable{
     protected void onClickActionButton(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseClickWindow.fxml"));
 
-        openPopupWithCB(loader);
+        openPopupWithCB(loader, () -> {
+                    ClickWindowController controller = loader.getController();
+                    controller.setCallback(addToTape);
+                }
+        );
 
     }
 
@@ -65,6 +71,18 @@ public class MainController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseMoveWindow.fxml"));
 
         openPopUpWithSceneCB(loader);
+    }
+
+    @FXML
+    protected void onDelayButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/DelayWindow.fxml"));
+
+        openPopupWithCB(loader, () -> {
+                    DelayWindowController controller = loader.getController();
+                    controller.setCallback(addToTape);
+                }
+        );
+
     }
 
 
@@ -90,7 +108,7 @@ public class MainController implements Initializable{
      * Callback to add state to tape
      * @param loader
      */
-    private void openPopupWithCB(FXMLLoader loader){
+    private void openPopupWithCB(FXMLLoader loader, Runnable cont){
         Parent root = null;
 
         try {
@@ -99,8 +117,7 @@ public class MainController implements Initializable{
             throw new RuntimeException(e);
         }
 
-        ClickWindowController controller = loader.getController();
-        controller.setCallback(addToTape);
+        cont.run();
 
         Stage popupStage = new Stage();
         popupStage.setScene(new Scene(root));
