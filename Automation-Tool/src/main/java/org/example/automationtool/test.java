@@ -12,17 +12,19 @@ public class test extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load Main window gui from FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MouseMoveWindow.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-
-        MoveWindowController controller = loader.getController();
-        controller.setScene(scene); // scene available here
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Your Window Title");
-        primaryStage.show();
+        Integer val = Integer.parseInt("0154");
+        System.out.println(val);
+//        // Load Main window gui from FXML
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("MouseMoveWindow.fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root);
+//
+//        MoveWindowController controller = loader.getController();
+//        controller.setScene(scene); // scene available here
+//
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle("Your Window Title");
+//        primaryStage.show();
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,5 @@
 //TODO: Add import export of tapes
+//TODO: Organise open popup method logics
 
 package org.example.automationtool.main;
 import javafx.fxml.FXML;
@@ -124,11 +125,13 @@ public class MainController implements Initializable{
 
         MoveWindowController controller = loader.getController();
         controller.setScene(scene); // scene available here
+        controller.setCallback(addToTape);
 
         Stage popupStage = new Stage();
         popupStage.setScene(scene);
         popupStage.setTitle("Your Window Title");
-        popupStage.show();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.showAndWait();
     }
 
 

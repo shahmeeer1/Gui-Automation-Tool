@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -13,8 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="org.example.automationtool.main.MoveWindowController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.automationtool.main.MoveWindowController">
    <children>
       <MenuBar>
         <menus>
@@ -42,7 +43,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
       </Label>
       <VBox prefHeight="424.0" prefWidth="464.0" VBox.vgrow="ALWAYS">
          <children>
-            <CheckBox fx:id="MoveCursorCB" mnemonicParsing="false" prefHeight="30.0" prefWidth="234.0" text="Move mouse cursor to:" onAction="#startingPosCBSwitch">
+            <CheckBox fx:id="MoveCursorCB" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="Move mouse cursor to:">
                <VBox.margin>
                   <Insets left="10.0" />
                </VBox.margin>
@@ -59,7 +60,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry1" disable="true">
+                        <TextField alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry1">
                            <HBox.margin>
                               <Insets bottom="10.0" right="10.0" top="15.0" />
                            </HBox.margin>
@@ -76,7 +77,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="yEntry1" alignment="CENTER" prefHeight="21.0" prefWidth="143.0" disable="true">
+                        <TextField fx:id="yEntry1" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0">
                            <HBox.margin>
                               <Insets right="10.0" top="15.0" />
                            </HBox.margin>
@@ -103,7 +104,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                <children>
                   <VBox prefHeight="137.0" prefWidth="314.0">
                      <children>
-                        <CheckBox fx:id="StartingPosCB" mnemonicParsing="false" prefHeight="31.0" prefWidth="234.0" text="Starting position:" disable="true">
+                        <CheckBox fx:id="StartingPosCB" disable="true" mnemonicParsing="false" prefHeight="20.0" prefWidth="134.0" text="Starting position:">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -117,7 +118,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry2" disable="true">
+                                    <TextField alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry2">
                                        <HBox.margin>
                                           <Insets bottom="10.0" right="10.0" top="15.0" />
                                        </HBox.margin>
@@ -131,7 +132,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="yEntry2" alignment="CENTER" prefHeight="21.0" prefWidth="143.0" disable="true">
+                                    <TextField fx:id="yEntry2" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0">
                                        <HBox.margin>
                                           <Insets bottom="5.0" right="10.0" top="15.0" />
                                        </HBox.margin>
@@ -178,7 +179,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                   <Insets />
                </opaqueInsets>
             </Separator>
-            <CheckBox fx:id="DeltaMoveCB" mnemonicParsing="false" prefHeight="30.0" prefWidth="234.0" text="Move mouse cursor by:">
+            <CheckBox fx:id="DeltaMoveCB" mnemonicParsing="false" prefHeight="30.0" prefWidth="174.0" text="Move mouse cursor by:">
                <VBox.margin>
                   <Insets left="10.0" />
                </VBox.margin>
@@ -195,7 +196,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry3" disable="true">
+                        <TextField alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0" fx:id="xEntry3">
                            <HBox.margin>
                               <Insets bottom="10.0" right="10.0" top="15.0" />
                            </HBox.margin>
@@ -209,7 +210,7 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="yEntry3" alignment="CENTER" prefHeight="21.0" prefWidth="143.0" disable="true" >
+                        <TextField fx:id="yEntry3" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="143.0">
                            <HBox.margin>
                               <Insets right="10.0" top="15.0" />
                            </HBox.margin>
@@ -234,5 +235,13 @@ fx:controller="org.example.automationtool.main.MoveWindowController">
             </Label>
          </children>
       </VBox>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button fx:id="ConfirmButton" onAction="#onConfirmButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Confirm" />
+        </buttons>
+         <VBox.margin>
+            <Insets right="30.0" />
+         </VBox.margin>
+      </ButtonBar>
    </children>
 </VBox>

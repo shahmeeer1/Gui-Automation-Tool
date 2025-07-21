@@ -1,26 +1,31 @@
-//TODO: use lambda in openpopup method
-//TODO: set toggle logic for this window
+// TODO: Disable confirm button when all checkboxes are unselected
+// TODO: display errors messages on text labels when out of bounds input entered
+
 
 package org.example.automationtool.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.util.Pair;
+import org.example.automationtool.Actions.Action;
+import org.example.automationtool.Actions.MoveTask;
+import org.example.automationtool.Actions.MoveTaskFactory;
 
 
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 
 public class MoveWindowController implements Initializable {
+
+    // Button
+    @FXML
+    private Button ConfirmButton;
 
     // Text Entries
     @FXML
@@ -51,14 +56,79 @@ public class MoveWindowController implements Initializable {
 
     // CheckBox ID -> TextField hashmap
     private HashMap<CheckBox, TextField[]> CBToTextFieldMap;
+
+    // Store scene for initialization;
     private Scene scene;
+
+    private Consumer<Action> sendState;
 
 
     @FXML
-    private void startingPosCBSwitch(ActionEvent event){
-        //System.out.println(event.getTarget().equals(MoveCursorCB));
+    private void onConfirmButton(){
 
-        // When selected, enable startingpos items
+        Pair<Integer, Integer> moveTo;
+        MoveTask state = null;
+
+        // validate fields
+        // Check what kind of movement is being made
+        if(DeltaMoveCB.isSelected()){
+            moveTo = getEntryData(DeltaMoveCB);
+            state = MoveTaskFactory.createMoveTask(moveTo.getKey(), moveTo.getValue(), true);
+        }
+        else if(MoveCursorCB.isSelected()){
+            if(StartingPosCB.isSelected()){
+
+                // move with start object
+                Pair<Integer, Integer> startAt;
+
+                moveTo = getEntryData(MoveCursorCB);    // End position of cursor
+                startAt = getEntryData(StartingPosCB);  // Starting position of cursor
+
+                state = MoveTaskFactory.createMoveTask(
+                        startAt.getKey(), startAt.getValue(),
+                        moveTo.getKey(), moveTo.getValue()
+                );
+            }
+            else{
+
+                // only move cursor
+                moveTo = getEntryData(MoveCursorCB);
+                state = MoveTaskFactory.createMoveTask(moveTo.getKey(), moveTo.getValue());
+            }
+        }
+        else{
+            //TODO: Should display error on label.
+            return;
+
+        }
+        // return objects to main
+
+        sendState.accept(state);
+        // close window
+
+        ((Stage) scene.getWindow()).close();
+    }
+
+    /**
+     * Retrieve x and y text field values for given
+     * @param box
+     * @return
+     */
+    private Pair<Integer, Integer> getEntryData(CheckBox box){
+
+        TextField[] entryArr = CBToTextFieldMap.get(box);
+
+        Integer xVal =  toInt(entryArr[0].getText());
+        Integer yVal =  toInt(entryArr[1].getText());
+
+        return new Pair<>(xVal, yVal);
+    }
+
+    private Integer toInt(String val){
+        if(val.isEmpty()){return 0;}
+        else{
+            return Integer.parseInt(val);
+        }
     }
 
 
@@ -142,5 +212,9 @@ public class MoveWindowController implements Initializable {
         this.scene = scene;
 
         setCheckBoxListener();
+    }
+
+    public void setCallback(Consumer<Action> callback) {
+        this.sendState = callback;
     }
 }

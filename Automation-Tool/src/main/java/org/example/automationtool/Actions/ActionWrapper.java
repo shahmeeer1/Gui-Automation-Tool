@@ -12,7 +12,7 @@ public class ActionWrapper {
     protected SimpleStringProperty comment;
 
     protected ActionWrapper(String action){
-        this.action = new SimpleStringProperty("action");
+        this.action = new SimpleStringProperty(action);
         System.out.println(this.action.get());
 
         this.label = new SimpleStringProperty("-");
