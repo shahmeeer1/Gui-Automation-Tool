@@ -26,7 +26,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="Menu_Edit_clear" onAction="#clearScript" mnemonicParsing="false" text="Clear" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.example.automationtool.Actions.Action;
@@ -15,6 +19,7 @@ import org.example.automationtool.Actions.move.MoveTask;
 import org.example.automationtool.Actions.move.MoveTaskFactory;
 
 
+import java.awt.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -208,10 +213,48 @@ public class MoveWindowController implements Initializable {
         });
     }
 
+    /**
+     * When space key pressed, fill x and y coordinates of Move Mouse section
+     * with respective mouse coordinates at moment of press
+     */
+    private void setMoveToListener(){
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if(!(keyEvent.getCode() == KeyCode.SPACE)){return;}
+            keyEvent.consume();
+            // if move cursor checkbox is not selected or if 'space' key is not pressed
+            if(!MoveCursorCB.isSelected()){return;}
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            updateVal(xEntry1, p.x);
+            updateVal(yEntry1, p.y);
+        });
+    }
+
+    /**
+     * When space key pressed, fill x and y coordinates of Start At section
+     * with respective mouse coordinates at moment of press
+     */
+    private void setStartAtListener(){
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent ->{
+            // if move cursor checkbox is not selected or if 's' key is not pressed
+            if(!StartingPosCB.isSelected() || !(keyEvent.getCode() == KeyCode.S)){return;}
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            updateVal(xEntry2, p.x);
+            updateVal(yEntry2, p.y);
+
+        } );
+    }
+
+    private void updateVal(TextField box, int val){
+        box.setText(String.valueOf(val));
+        box.end();
+    }
+
     public void setScene(Scene scene){
         this.scene = scene;
 
         setCheckBoxListener();
+        setMoveToListener();
+        setStartAtListener();
     }
 
     public void setCallback(Consumer<Action> callback) {

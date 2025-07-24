@@ -53,6 +53,7 @@ public class DelayWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DelayEntry.setTextFormatter(DigitFilter.createDigitFilter(7));
+        DelayEntry.setText("100");
     }
 
     public void setCallback(Consumer<Action> callback){

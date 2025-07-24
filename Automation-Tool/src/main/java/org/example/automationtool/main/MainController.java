@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,33 +50,34 @@ public class MainController implements Initializable{
     @FXML
     private TableColumn<Action, String> Comment_Column;
 
+    @FXML
+    private MenuItem Menu_Edit_clear;
+
     private Tape tape;
     private Consumer<Action> addToTape;
 
     private StateMachine machine;
 
+    private Stage primaryStage;
 
 
-    @FXML
+
+    @FXML // takes callback and scene
     protected void onClickActionButton(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseClickWindow.fxml"));
 
-        openPopupWithCB(loader, () -> {
-                    ClickWindowController controller = loader.getController();
-                    controller.setCallback(addToTape);
-                }
-        );
+        openClickMousePopup(loader);
 
     }
 
-    @FXML
+    @FXML // takes callback and scene
     protected void onMouseMoveButton(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/MouseMoveWindow.fxml"));
 
-        openPopUpWithSceneCB(loader);
+        openMoveMousePopup(loader);
     }
 
-    @FXML
+    @FXML // takes callback
     protected void onDelayButton(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/DelayWindow.fxml"));
 
@@ -92,6 +94,13 @@ public class MainController implements Initializable{
 
         machine.execute();
 
+        ((Stage) TimerButton.getScene().getWindow()).toFront();
+
+    }
+
+    @FXML
+    protected void clearScript(){
+        tape.getTape().clear();
     }
 
 
@@ -125,10 +134,10 @@ public class MainController implements Initializable{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        Stage popupStage = new Stage();
 
         cont.run();
 
-        Stage popupStage = new Stage();
         popupStage.setScene(new Scene(root));
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.showAndWait();
@@ -138,7 +147,7 @@ public class MainController implements Initializable{
      * Load the move mouse window
      * @param loader
      */
-    private void openPopUpWithSceneCB(FXMLLoader loader){
+    private void openMoveMousePopup(FXMLLoader loader){
         Parent root = null;
 
         try {
@@ -154,6 +163,30 @@ public class MainController implements Initializable{
         controller.setCallback(addToTape);
 
         Stage popupStage = new Stage();
+
+        popupStage.setScene(scene);
+        popupStage.setTitle("Your Window Title");
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.showAndWait();
+    }
+
+    private void openClickMousePopup(FXMLLoader loader){
+        Parent root = null;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        ClickWindowController controller = loader.getController();
+        controller.setScene(scene); // scene available here
+        controller.setCallback(addToTape);
+
+        Stage popupStage = new Stage();
+
         popupStage.setScene(scene);
         popupStage.setTitle("Your Window Title");
         popupStage.initModality(Modality.APPLICATION_MODAL);

@@ -5,7 +5,6 @@ import org.example.automationtool.Actions.Action;
 import org.example.automationtool.Actions.Status;
 import org.example.automationtool.TransitionMethods.Next;
 
-import java.util.ArrayList;
 
 public class StateMachine {
 
@@ -20,14 +19,14 @@ public class StateMachine {
      * Executes the tape currently loaded in the state machine.
      * @return true if completes uninterrupted execution, otherwise false.
      */
-    public boolean execute(){
+    public void execute(){
 
         for(int pointer = 0; pointer < tape.size();){
             Action state = tape.get(pointer);
 
             Status code = state.run();
 
-            if(code != Status.SUCCESS){return false;}
+            if(code != Status.SUCCESS){return;}//return false;}
 
             Next transition = state.getNext();
 
@@ -35,7 +34,8 @@ public class StateMachine {
 
         }
         System.out.println("Finished execution");
-        return true;
+
+        // return true;
 
     }
 

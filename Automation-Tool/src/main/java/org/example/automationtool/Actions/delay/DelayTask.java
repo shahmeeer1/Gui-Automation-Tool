@@ -27,8 +27,7 @@ public class DelayTask extends ActionWrapper implements Action {
     @Override
     public Status run() {
         rb.delay(delay);
-        System.out.println("DONE WAITING");
-        return null;
+        return Status.SUCCESS;
     }
 
     @Override
