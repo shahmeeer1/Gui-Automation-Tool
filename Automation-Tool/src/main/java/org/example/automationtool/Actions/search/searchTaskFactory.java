@@ -1,7 +1,6 @@
-package org.example.automationtool.Actions;
+package org.example.automationtool.Actions.search;
 
 import org.example.automationtool.TransitionMethods.ConditionalNext;
-import org.example.automationtool.TransitionMethods.IncrementNext;
 
 
 // TODO: Complete conditional next implementation

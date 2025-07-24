@@ -42,7 +42,7 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="StartScriptButton" contentDisplay="GRAPHIC_ONLY" layoutX="108.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="79.0" text="Start">
+                        <Button fx:id="StartScriptButton" onAction="#onStartButton" contentDisplay="GRAPHIC_ONLY" layoutX="108.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="79.0" text="Start">
                            <graphic>
                                <ImageView fitHeight="75.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                    <Image url="@../../../icons/play-button.png" />

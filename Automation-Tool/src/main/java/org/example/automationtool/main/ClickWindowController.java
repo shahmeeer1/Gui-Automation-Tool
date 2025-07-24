@@ -6,20 +6,16 @@ package org.example.automationtool.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.example.automationtool.Actions.Action;
-import org.example.automationtool.Actions.clickTask;
-import org.example.automationtool.Actions.clickTaskFactory;
+import org.example.automationtool.Actions.click.clickTask;
+import org.example.automationtool.Actions.click.clickTaskFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
 public class ClickWindowController implements Initializable {
 
@@ -35,6 +31,9 @@ public class ClickWindowController implements Initializable {
 
     @FXML
     private Label errorLabel;
+
+    @FXML
+    private ComboBox<String> ButtonComboBox;
 
     private Consumer<Action> sendState; //To send new state back ot main controller
 
@@ -54,8 +53,9 @@ public class ClickWindowController implements Initializable {
 
         int x = Integer.parseInt(xEntry.getText());
         int y = Integer.parseInt(yEntry.getText());
+        String button = ButtonComboBox.getValue();
 
-        clickTask action = clickTaskFactory.createClickTask(x, y);
+        clickTask action = clickTaskFactory.createClickTask(x, y, button);
 
         //TODO: send back to main controller
         sendState.accept(action);
@@ -71,6 +71,9 @@ public class ClickWindowController implements Initializable {
 
         xEntry.setTextFormatter(DigitFilter.createDigitFilter(5));
         yEntry.setTextFormatter(DigitFilter.createDigitFilter(5));
+
+        ButtonComboBox.getItems().addAll("Left Click", "Right Click", "Scroll Click");
+        ButtonComboBox.setValue("Left Click");
     }
 
     public void setCallback(Consumer<Action> callback) {

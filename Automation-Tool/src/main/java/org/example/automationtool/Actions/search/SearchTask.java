@@ -1,5 +1,8 @@
-package org.example.automationtool.Actions;
+package org.example.automationtool.Actions.search;
 
+import org.example.automationtool.Actions.Action;
+import org.example.automationtool.Actions.ActionWrapper;
+import org.example.automationtool.Actions.Status;
 import org.example.automationtool.TransitionMethods.ConditionalNext;
 import org.example.automationtool.TransitionMethods.Next;
 
@@ -8,7 +11,7 @@ import org.example.automationtool.TransitionMethods.Next;
  * Implements openCV template Matching.
  * Template Matching implementation Incomplete
  */
-public class SearchTask extends ActionWrapper implements Action{
+public class SearchTask extends ActionWrapper implements Action {
 
     private String template;
     private String image;

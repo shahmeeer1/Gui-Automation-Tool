@@ -11,8 +11,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.example.automationtool.Actions.Action;
-import org.example.automationtool.Actions.MoveTask;
-import org.example.automationtool.Actions.MoveTaskFactory;
+import org.example.automationtool.Actions.move.MoveTask;
+import org.example.automationtool.Actions.move.MoveTaskFactory;
 
 
 import java.net.URL;

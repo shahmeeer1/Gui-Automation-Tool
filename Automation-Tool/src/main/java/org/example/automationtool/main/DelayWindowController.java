@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.automationtool.Actions.Action;
-import org.example.automationtool.Actions.DelayTask;
-import org.example.automationtool.Actions.DelayTaskFactory;
+import org.example.automationtool.Actions.delay.DelayTask;
+import org.example.automationtool.Actions.delay.DelayTaskFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;

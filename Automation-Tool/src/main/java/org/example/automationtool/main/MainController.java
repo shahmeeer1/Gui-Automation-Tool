@@ -52,6 +52,8 @@ public class MainController implements Initializable{
     private Tape tape;
     private Consumer<Action> addToTape;
 
+    private StateMachine machine;
+
 
 
     @FXML
@@ -82,6 +84,13 @@ public class MainController implements Initializable{
                     controller.setCallback(addToTape);
                 }
         );
+
+    }
+
+    @FXML
+    protected void onStartButton(){
+
+        machine.execute();
 
     }
 
@@ -164,6 +173,9 @@ public class MainController implements Initializable{
         // Create new tape object
         tape = new Tape();
         addToTape = (state) -> {addStateToTape(state);};
+
+        machine = new StateMachine(tape.getTape());
+
 
 
         // Connect table to tape

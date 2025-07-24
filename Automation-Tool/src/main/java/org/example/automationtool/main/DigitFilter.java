@@ -1,4 +1,3 @@
-//TODO: Test new limit parameter on line 17 works
 package org.example.automationtool.main;
 
 import javafx.scene.control.TextFormatter;

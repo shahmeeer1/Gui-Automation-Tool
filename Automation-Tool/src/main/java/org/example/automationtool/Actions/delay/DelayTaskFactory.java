@@ -1,4 +1,4 @@
-package org.example.automationtool.Actions;
+package org.example.automationtool.Actions.delay;
 
 import org.example.automationtool.TransitionMethods.IncrementNext;
 

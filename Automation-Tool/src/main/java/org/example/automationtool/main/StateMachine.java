@@ -1,5 +1,6 @@
 package org.example.automationtool.main;
 
+import javafx.collections.ObservableList;
 import org.example.automationtool.Actions.Action;
 import org.example.automationtool.Actions.Status;
 import org.example.automationtool.TransitionMethods.Next;
@@ -8,9 +9,9 @@ import java.util.ArrayList;
 
 public class StateMachine {
 
-    private ArrayList<Action> tape;
+    private ObservableList<Action> tape;
 
-    public StateMachine(ArrayList<Action> tape){
+    public StateMachine(ObservableList<Action> tape){
         this.tape = tape;
     }
 
@@ -33,13 +34,13 @@ public class StateMachine {
             pointer = transition.next(code, pointer);
 
         }
-
+        System.out.println("Finished execution");
         return true;
 
     }
 
 
-    public void setTape(ArrayList<Action> tape) {
+    public void setTape(ObservableList<Action> tape) {
         this.tape = tape;
     }
 }
