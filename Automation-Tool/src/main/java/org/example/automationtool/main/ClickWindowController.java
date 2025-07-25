@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -44,16 +41,37 @@ public class ClickWindowController implements Initializable {
     @FXML
     private ComboBox<String> ButtonComboBox;
 
+    @FXML
+    private CheckBox CurrentPositionCB;
+
     private Consumer<Action> sendState; //To send new state back ot main controller
 
     private Scene scene;
 
     @FXML
     // Only enable confirm button if there is something in both entries
-    protected void activate(KeyEvent event){
-        if(xEntry.getLength() == 0 || yEntry.getLength() == 0){ClickButton.setDisable(true);}
+    protected void activate(){
+        if(xEntry.getLength() == 0 || yEntry.getLength() == 0 ){ClickButton.setDisable(true);}
         else{ClickButton.setDisable(false);}
 
+    }
+
+    @FXML
+    // On select, disable x and y coord boxes. on disable, enable them
+    protected void onCurrentPosCB(ActionEvent event){
+        if(CurrentPositionCB.isSelected()){
+            // Check box is selected
+            xEntry.clear();
+            xEntry.setDisable(true);
+            yEntry.clear();
+            yEntry.setDisable(true);
+            ClickButton.setDisable(false);
+        }
+        else{
+            xEntry.setDisable(false);
+            yEntry.setDisable(false);
+            ClickButton.setDisable(true);
+        }
     }
 
     @FXML
@@ -62,11 +80,18 @@ public class ClickWindowController implements Initializable {
         // try to create object
         // close on success, show error message on failure
 
-        int x = Integer.parseInt(xEntry.getText());
-        int y = Integer.parseInt(yEntry.getText());
         String button = ButtonComboBox.getValue();
+        clickTask action;
 
-        clickTask action = clickTaskFactory.createClickTask(x, y, button);
+        if(CurrentPositionCB.isSelected()){
+            action = clickTaskFactory.createClickTask(button);
+        }
+        else {
+            int x = Integer.parseInt(xEntry.getText());
+            int y = Integer.parseInt(yEntry.getText());
+
+            action = clickTaskFactory.createClickTask(x, y, button);
+        }
 
         //TODO: send back to main controller
         sendState.accept(action);
@@ -96,17 +121,20 @@ public class ClickWindowController implements Initializable {
      * entries with respective mouse coordinates at moment of click
      * @param scene
      */
-    public void setScene(Scene scene){scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+    public void setScene(Scene scene){
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
 
-        if(event.getCode() == KeyCode.SPACE){
+            if(event.getCode() == KeyCode.SPACE){
 
-            Point p = MouseInfo.getPointerInfo().getLocation();
+                Point p = MouseInfo.getPointerInfo().getLocation();
 
-            xEntry.setText(String.valueOf(p.x));
-            xEntry.end();
-            yEntry.setText(String.valueOf(p.y));
-            yEntry.end();
-        }
-    });
+                xEntry.setText(String.valueOf(p.x));
+                xEntry.end();
+                yEntry.setText(String.valueOf(p.y));
+                yEntry.end();
+            }
+        });
+
+
     }
 }

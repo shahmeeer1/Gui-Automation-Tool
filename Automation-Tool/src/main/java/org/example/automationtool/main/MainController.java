@@ -12,6 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.automationtool.Actions.Action;
@@ -213,14 +214,15 @@ public class MainController implements Initializable{
 
         // Connect table to tape
         Table.setItems(tape.getTape());
+        Table.setEditable(true);
         Action_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("action"));
         Value_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("value"));
         Label_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("label"));
         Comment_Column.setCellValueFactory(new PropertyValueFactory<Action, String>("comment"));
 
-        Value_Column.setSortable(false);
-
         Table.getColumns().setAll(Action_Column, Value_Column, Label_Column, Comment_Column);
+
+        Label_Column.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
 

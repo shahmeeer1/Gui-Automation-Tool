@@ -11,10 +11,18 @@ import java.awt.event.InputEvent;
 
 public class clickTask extends ActionWrapper implements Action {
 
-    private static Robot rb = RobotProvider.getRobot();
+    protected static Robot rb = RobotProvider.getRobot();
+    protected int button;
+    protected final Next nextStrategy;
 
+    protected clickTask(String button, Next next){
+        super("Mouse Click");
+        this.nextStrategy = next;
+        this.button = getButton(button);
+        value.set("");
+    }
 
-    private static int getButton(String buttonName){
+    protected static int getButton(String buttonName){
         return switch (buttonName) {
             case "Left Click" -> InputEvent.BUTTON1_DOWN_MASK;
             case "Right Click" -> InputEvent.BUTTON3_DOWN_MASK;
@@ -23,28 +31,9 @@ public class clickTask extends ActionWrapper implements Action {
         };
     }
 
-    private int x;
-    private int y;
-    private int button;
-    private final Next nextStrategy;
-
-    protected clickTask(int x, int y, String button, Next next){
-        super("Mouse Click");
-        this.x = x;
-        this.y = y;
-        this.nextStrategy = next;
-        this.button = getButton(button);
-
-
-        value.set(String.format("(%d, %d)", x, y));
-    }
-
     @Override
     public Status run() {
-        rb.mouseMove(x, y);
-        rb.mousePress(button);
-        rb.mouseRelease(button);
-        return Status.SUCCESS;
+        return null;
     }
 
     @Override
@@ -54,6 +43,6 @@ public class clickTask extends ActionWrapper implements Action {
 
     //TEMPORARY
     public String toString(){
-        return String.format("Clicking at (%d, %d)", x, y);
+        return"Mouse click task";
     }
 }
