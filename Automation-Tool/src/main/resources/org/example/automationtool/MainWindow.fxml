@@ -110,7 +110,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="ImageSearchActionButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="79.0" text="ImageSearch">
+                        <Button fx:id="ImageSearchActionButton" onAction="#onImageSearchButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="79.0" text="ImageSearch">
                            <graphic>
                               <ImageView fitHeight="75.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

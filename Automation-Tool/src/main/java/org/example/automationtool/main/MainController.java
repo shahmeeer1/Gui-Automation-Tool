@@ -104,6 +104,16 @@ public class MainController implements Initializable{
         tape.getTape().clear();
     }
 
+    @FXML
+    protected void onImageSearchButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/automationtool/FindImageWindow.fxml"));
+
+
+        openImageSearchPopup(loader);
+
+
+    }
+
 
     private void openPopup(FXMLLoader loader){
         Parent root = null;
@@ -194,6 +204,29 @@ public class MainController implements Initializable{
         popupStage.showAndWait();
     }
 
+    private void openImageSearchPopup(FXMLLoader loader){
+        Parent root = null;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        FindImageWindowController controller = loader.getController();
+        controller.setScene(scene); // scene available here
+        controller.setCallback(addToTape);
+
+        Stage popupStage = new Stage();
+
+        popupStage.setScene(scene);
+        popupStage.setTitle("Your Window Title");
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.showAndWait();
+    }
+
 
 
 
@@ -223,6 +256,7 @@ public class MainController implements Initializable{
         Table.getColumns().setAll(Action_Column, Value_Column, Label_Column, Comment_Column);
 
         Label_Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        Comment_Column.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
 

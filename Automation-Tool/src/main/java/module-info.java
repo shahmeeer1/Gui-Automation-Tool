@@ -2,6 +2,7 @@ module org.example.automationtool {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires opencv;
 
 
     exports org.example.automationtool.TransitionMethods;

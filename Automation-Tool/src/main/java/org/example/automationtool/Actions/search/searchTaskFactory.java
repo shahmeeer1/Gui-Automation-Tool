@@ -6,8 +6,9 @@ import org.example.automationtool.TransitionMethods.ConditionalNext;
 // TODO: Complete conditional next implementation
 public class searchTaskFactory {
 
-    public static SearchTask CreateSearchTask(String template, String image){
-        return new SearchTask(template, image, new ConditionalNext(null, null));
+    public static SearchTask CreateSearchTask(String template){
+        return new SearchTask(template, new ConditionalNext(null, null));
+        //return null;
     }
 
 
