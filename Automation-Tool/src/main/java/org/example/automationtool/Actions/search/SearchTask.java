@@ -2,7 +2,6 @@
  * TODO: modify search task factory to allow for different variations in action when image is found
  * TODO: Allow for mouse ot move or click at found image.
  * TODO: create multiple search task subclasses that implement this.
- * TODO: abstract image detection logic ot new class
  */
 
 package org.example.automationtool.Actions.search;
@@ -40,6 +39,8 @@ public class SearchTask extends ActionWrapper implements Action {
 
     @Override
     public Status run() {
+        // delete
+        //long startTime = System.nanoTime();
 
         // Get result of image search
         Pair<Double, Point> result = ImageProcessor.DetectImg(template);
@@ -51,8 +52,16 @@ public class SearchTask extends ActionWrapper implements Action {
         int x = (int) result.getValue().x;
         int y = (int) result.getValue().y;
 
+
         clickTask act = clickTaskFactory.createClickTask(x, y, "Left Click");
         act.run();
+        //DELETE:
+//        long endTime = System.nanoTime();
+//        long durationInNano = endTime - startTime;
+//
+//        System.out.println("Duration (nanoseconds): " + durationInNano);
+//        System.out.println("Duration (milliseconds): " + (durationInNano / 1_000_000));
+
 
         return Status.SUCCESS;
     }

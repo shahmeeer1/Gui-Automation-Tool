@@ -26,7 +26,7 @@ public class test extends Application {
 
     public static void main(String[] args) {
 
-        SearchTask test1 = searchTaskFactory.CreateSearchTask("C:\\Users\\shahmeer\\Documents\\GitHub\\Gui-Automation-Tool\\Automation-Tool\\src\\main\\resources\\icons\\searchtestimg1.png");
+        SearchTask test1 = searchTaskFactory.CreateSearchTask("C:\\Users\\shahmeer\\Desktop\\someing.png");
         test1.run();
 
         //launch(args);

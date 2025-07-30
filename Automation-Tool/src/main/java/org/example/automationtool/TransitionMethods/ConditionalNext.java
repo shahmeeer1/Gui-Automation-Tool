@@ -1,6 +1,7 @@
 package org.example.automationtool.TransitionMethods;
 
 import org.example.automationtool.Actions.Status;
+import org.example.automationtool.main.TransitionContext;
 
 /**
  * Move to the next FSM state depending on a binary condition
@@ -14,29 +15,27 @@ public class ConditionalNext implements Next{
     private Next fail;
 
 
-    public ConditionalNext(Next succ, Next fail){
-        this.success = succ;
+    public ConditionalNext(Next success, Next fail){
+        this.success = success;
         this.fail = fail;
     }
 
 
     @Override
-    public int next(Status code, int pointer) {
+    public void next(Status code, TransitionContext pointer) {
 
         switch (code){
             case SUCCESS -> {
-                return success.next(code, pointer);
+                success.next(code, pointer);
             }
 
             case FAILURE -> {
-                return fail.next(code, pointer);
+                fail.next(code, pointer);
             }
 
-            case UNRESOLVED_ERROR -> {return -1;}
+            case UNRESOLVED_ERROR -> {pointer.setPointer(-1);}
 
         }
-
-        return -1;
 
     }
 

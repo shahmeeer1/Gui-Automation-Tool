@@ -241,7 +241,7 @@ public class MainController implements Initializable{
         tape = new Tape();
         addToTape = (state) -> {addStateToTape(state);};
 
-        machine = new StateMachine(tape.getTape());
+        machine = new StateMachine(tape);
 
 
 

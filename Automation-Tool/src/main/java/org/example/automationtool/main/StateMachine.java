@@ -8,9 +8,9 @@ import org.example.automationtool.TransitionMethods.Next;
 
 public class StateMachine {
 
-    private ObservableList<Action> tape;
+    private Tape tape;
 
-    public StateMachine(ObservableList<Action> tape){
+    public StateMachine(Tape tape){
         this.tape = tape;
     }
 
@@ -20,9 +20,16 @@ public class StateMachine {
      * @return true if completes uninterrupted execution, otherwise false.
      */
     public void execute(){
+        // initialise script for execution
+        ObservableList<Action> script = tape.getTape();
 
-        for(int pointer = 0; pointer < tape.size();){
-            Action state = tape.get(pointer);
+        TransitionContext pointer = new TransitionContext();
+        pointer.setLabelMap(tape.findLabels());
+        int pval;
+
+        while((pval = pointer.getPointer()) < script.size()){
+
+            Action state = script.get(pval);
 
             Status code = state.run();
 
@@ -30,17 +37,16 @@ public class StateMachine {
 
             Next transition = state.getNext();
 
-            pointer = transition.next(code, pointer);
+            transition.next(code, pointer);
 
         }
         System.out.println("Finished execution");
 
-        // return true;
-
     }
 
 
-    public void setTape(ObservableList<Action> tape) {
+
+    public void setTape(Tape tape) {
         this.tape = tape;
     }
 }
