@@ -15,9 +15,17 @@ public class ConditionalNext implements Next{
     private Next fail;
 
 
-    public ConditionalNext(Next success, Next fail){
-        this.success = success;
-        this.fail = fail;
+    public ConditionalNext(String success, String fail){
+
+        this.success = convertToNext(success);
+        this.fail = convertToNext(fail);
+
+    }
+
+    private Next convertToNext(String label){
+        if(label == null){throw new IllegalArgumentException("Invalid input!");}
+        if(label.equals("Next")){return new IncrementNext();}
+        else{return new JumpNext(label);}
     }
 
 

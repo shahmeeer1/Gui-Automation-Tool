@@ -26,8 +26,8 @@ public class test extends Application {
 
     public static void main(String[] args) {
 
-        SearchTask test1 = searchTaskFactory.CreateSearchTask("C:\\Users\\shahmeer\\Desktop\\someing.png");
-        test1.run();
+        //SearchTask test1 = searchTaskFactory.CreateSearchTask("C:\\Users\\shahmeer\\Desktop\\someing.png");
+        //test1.run();
 
         //launch(args);
 

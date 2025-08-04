@@ -9,6 +9,7 @@ import org.example.automationtool.TransitionMethods.Next;
 public class StateMachine {
 
     private Tape tape;
+    private boolean flag;
 
     public StateMachine(Tape tape){
         this.tape = tape;
@@ -17,7 +18,7 @@ public class StateMachine {
 
     /**
      * Executes the tape currently loaded in the state machine.
-     * @return true if completes uninterrupted execution, otherwise false.
+     * @return - true if completes uninterrupted execution, otherwise false.
      */
     public void execute(){
         // initialise script for execution
@@ -25,9 +26,10 @@ public class StateMachine {
 
         TransitionContext pointer = new TransitionContext();
         pointer.setLabelMap(tape.findLabels());
+        flag = true;
         int pval;
 
-        while((pval = pointer.getPointer()) < script.size()){
+        while(((pval = pointer.getPointer()) < script.size() && flag)){
 
             Action state = script.get(pval);
 
@@ -44,7 +46,7 @@ public class StateMachine {
 
     }
 
-
+    public void updateFlag(boolean val){flag = val;}
 
     public void setTape(Tape tape) {
         this.tape = tape;

@@ -10,10 +10,7 @@ import javafx.util.Pair;
 import org.example.automationtool.Actions.Action;
 import org.example.automationtool.Actions.ActionWrapper;
 import org.example.automationtool.Actions.Status;
-import org.example.automationtool.Actions.click.clickTask;
-import org.example.automationtool.Actions.click.clickTaskFactory;
 import org.example.automationtool.TransitionMethods.ConditionalNext;
-import org.example.automationtool.TransitionMethods.IncrementNext;
 import org.example.automationtool.TransitionMethods.Next;
 
 import org.opencv.core.Point;
@@ -25,8 +22,8 @@ import org.opencv.core.Point;
  */
 public class SearchTask extends ActionWrapper implements Action {
 
-    private String template;
-    private final ConditionalNext nextStrategy;
+    protected String template;
+    protected final ConditionalNext nextStrategy;
 
     protected SearchTask(String templatePath, ConditionalNext next){
         super("Find Image");
@@ -38,38 +35,10 @@ public class SearchTask extends ActionWrapper implements Action {
 
 
     @Override
-    public Status run() {
-        // delete
-        //long startTime = System.nanoTime();
-
-        // Get result of image search
-        Pair<Double, Point> result = ImageProcessor.DetectImg(template);
-
-        // TODO: allow user to specify threshold
-        System.out.println("About to click");
-        if(result.getKey() < 0.85){return Status.FAILURE;}
-        // temporarily click at location
-        int x = (int) result.getValue().x;
-        int y = (int) result.getValue().y;
-
-
-        clickTask act = clickTaskFactory.createClickTask(x, y, "Left Click");
-        act.run();
-        //DELETE:
-//        long endTime = System.nanoTime();
-//        long durationInNano = endTime - startTime;
-//
-//        System.out.println("Duration (nanoseconds): " + durationInNano);
-//        System.out.println("Duration (milliseconds): " + (durationInNano / 1_000_000));
-
-
-        return Status.SUCCESS;
-    }
+    public Status run() {return null;}
 
     @Override
     public Next getNext() {
-        // TODO: Implement conditional next
-        //return nextStrategy;
-        return new IncrementNext();
+        return nextStrategy;
     }
 }

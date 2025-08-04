@@ -32,7 +32,7 @@ public class ActionWrapper {
 
     public void setAction(String action) { this.action.set(action); }
     public void setValue(String value) { this.value.set(value); }
-    public void setLabel(String label) { this.label.set(label); }
+    public void setLabel(String label) {this.label.set(label); }
     public void setComment(String comment) { this.comment.set(comment); }
 
 }

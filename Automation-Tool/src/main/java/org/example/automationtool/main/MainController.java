@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
@@ -61,6 +58,8 @@ public class MainController implements Initializable{
 
     private Stage primaryStage;
 
+    private boolean startFlag;
+
 
 
     @FXML // takes callback and scene
@@ -92,11 +91,20 @@ public class MainController implements Initializable{
 
     @FXML
     protected void onStartButton(){
-
-        machine.execute();
+        if(startFlag){return;}
+        startFlag = true;
+        new Thread(() -> {
+            machine.execute();
+            startFlag = false;
+        }).start();
 
         ((Stage) TimerButton.getScene().getWindow()).toFront();
 
+    }
+
+    @FXML
+    protected void onStopButton(){
+        machine.updateFlag(false);
     }
 
     @FXML

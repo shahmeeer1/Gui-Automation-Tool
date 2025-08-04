@@ -5,6 +5,7 @@ import org.example.automationtool.main.RobotProvider;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
@@ -52,7 +53,6 @@ public class ImageProcessor {
         return convertedImage;
     }
 
-
     /**
      * Detect the given image on screen and return the result and location
      * @param templatePath - path of image to be detected.
@@ -75,9 +75,28 @@ public class ImageProcessor {
         Core.MinMaxLocResult mmr = Core.minMaxLoc(results);
 
         outputResults(mmr); // For debugging and testing
-
         return new Pair<>(mmr.maxVal, mmr.maxLoc);
     }
+
+    /**
+     * return coordinates of centre of located image
+     * @param templatePath - image to detect
+     * @return - coordinates of centre of located image and confidence score
+     */
+    public static Pair<Double, org.opencv.core.Point> DetectImgCenter(String templatePath){
+        Pair<Double, org.opencv.core.Point> res = DetectImg(templatePath);
+        Point pos = res.getValue();
+        Mat img = Imgcodecs.imread(templatePath);
+        int height = img.rows() / 2;
+        int width = img.cols() / 2;
+
+        org.opencv.core.Point centeredPos = new org.opencv.core.Point(pos.x + width, pos.y + height);
+
+        return new Pair<>(res.getKey(), centeredPos);
+    }
+
+
+
 
     private static void outputResults(Core.MinMaxLocResult mmr){
         System.out.println("Max value: " + mmr.maxVal);
