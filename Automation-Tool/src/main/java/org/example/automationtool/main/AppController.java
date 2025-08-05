@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 //TODO: Improve table
 
 /**
- * Allow table elements to be removed
- * allow table elements to be reordered
  * add jump action
  */
 

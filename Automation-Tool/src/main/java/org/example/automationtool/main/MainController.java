@@ -2,6 +2,7 @@
 //TODO: Organise open popup method logics
 
 package org.example.automationtool.main;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ import org.example.automationtool.Actions.Action;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
@@ -120,6 +122,26 @@ public class MainController implements Initializable{
         openImageSearchPopup(loader);
 
 
+    }
+
+    @FXML
+    protected void ondownButton(){
+        swap(1);
+    }
+
+    @FXML
+    protected void onUpButton(){
+        swap(-1);
+    }
+
+    private void swap(int direction){
+        int selected = Table.getSelectionModel().getSelectedIndex();
+        int target = selected + direction;
+        ObservableList<?> items = Table.getItems();
+
+        if((selected < 0) || (target < 0) || (target >= items.size())){return;}
+
+        Collections.swap(items, selected, target);
     }
 
 
@@ -266,6 +288,36 @@ public class MainController implements Initializable{
         Label_Column.setCellFactory(TextFieldTableCell.forTableColumn());
         Comment_Column.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        configureDeleteBehaviour();
+
+    }
+
+    private void configureDeleteBehaviour(){
+        Table.setRowFactory(tv -> {
+            TableRow<Action> row = new TableRow<>();
+
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem deleteItem = new MenuItem("Delete");
+
+            deleteItem.setOnAction(event -> {
+                Action item = row.getItem();
+                if (item != null) {
+                    Table.getItems().remove(item);
+                }
+                Table.getSelectionModel().clearSelection();
+            });
+
+            contextMenu.getItems().add(deleteItem);
+
+            // Only show context menu for non-empty rows
+            row.contextMenuProperty().bind(
+                    javafx.beans.binding.Bindings.when(row.emptyProperty())
+                            .then((ContextMenu) null)
+                            .otherwise(contextMenu)
+            );
+
+            return row;
+        });
     }
 
     private void addStateToTape(Action state){
