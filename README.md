@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/shahmeeer1/Photoelectric-effect-simulator/blob/main/phet.png" width="200">
+  <img src="https://github.com/shahmeeer1/Gui-Automation-Tool/blob/main/robot.png" width="150">
   <br>
   GUI Task Automation Tool
   <br>
