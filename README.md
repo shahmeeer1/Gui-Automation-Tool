@@ -26,13 +26,14 @@ The scripts are structured as finite state machine tapes making it possible to c
 *   **Timing:** Adds delays between actions to add human-like behaviour.
 *   **Script Management:** View and manage scripts in a clear and structured fashion.
 *   **GUI Based:** An easy to use, modern user interface built with JavaFX.
+*   **OpenAI Integration:** Coming soon... Use ai for intelligent decision making at execution time.
 
 ## Tech Stack
 
 *   **Language:** Java
 *   **Management/Dependencies:** Maven
-*   **Computer Vision:** OpenCV tempalte matching
-*   **Testing:**: JUnit
+*   **Computer Vision:** OpenCV template matching
+*   **Testing:** JUnit
 
 ## Installation
 
