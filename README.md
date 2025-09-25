@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="https://github.com/shahmeeer1/Photoelectric-effect-simulator/blob/main/phet.png" width="200">
   <br>
-  Gui Task Automation Tool
+  GUI Task Automation Tool
   <br>
 </h1>
 
